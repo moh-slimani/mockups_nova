@@ -2,7 +2,9 @@
 
 namespace App\Nova;
 
+use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\URL;
@@ -43,8 +45,16 @@ class Tab extends Resource
     {
         return [
             ID::make()->sortable(),
+
             Text::make('Title')->sortable()->placeholder('Tab Title'),
-            URL::make('URL')
+            BelongsTo::make('Project', 'project'),
+            Text::make('URL')->rules('url'),
+
+
+            Images::make('Screen', 'screen')
+                ->hideFromIndex()
+                ->rules('required')
+                ->temporary(now()->addMinutes(10)),
         ];
     }
 

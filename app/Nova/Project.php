@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Fields\ID;
@@ -26,7 +27,7 @@ class Project extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -47,6 +48,12 @@ class Project extends Resource
     {
         return [
             ID::make()->sortable(),
+
+            Images::make('Favicon', 'favicon')
+                ->conversionOnIndexView('thumb')
+                ->rules('required')
+                ->temporary(now()->addMinutes(10)),
+
             Text::make('Name')->sortable()->placeholder('Project name'),
             Hidden::make('User', 'user_id')->default(function ($request) {
                 return $request->user()->id;
