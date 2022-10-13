@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\URL;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Text;
@@ -60,6 +61,8 @@ class Project extends Resource
             }),
             Number::make('Tabs', 'tabs_count')->showOnIndex()->hideWhenCreating()->hideWhenUpdating(),
             HasMany::make('Tabs'),
+
+            URL::make('Link')
         ];
     }
 

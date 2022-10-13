@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Route::get('projects/{project}', function (Project $project) {
     return Inertia::render('BrowserMockup', ['project' => $project]);
-});
+})->name('projects.show');
 
 Route::middleware([
     'auth:sanctum',

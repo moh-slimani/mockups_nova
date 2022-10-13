@@ -79,4 +79,9 @@ class Project extends Model implements HasMedia
             : asset('favicon.ico');
     }
 
+    public function getLinkAttribute(): string
+    {
+        return route('projects.show', $this->id);
+    }
+
 }
