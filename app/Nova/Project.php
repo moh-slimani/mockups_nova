@@ -4,9 +4,11 @@ namespace App\Nova;
 
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\URL;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\HasMany;
@@ -62,7 +64,9 @@ class Project extends Resource
             Number::make('Tabs', 'tabs_count')->showOnIndex()->hideWhenCreating()->hideWhenUpdating(),
             HasMany::make('Tabs'),
 
-            URL::make('Link')->hideWhenUpdating()->hideWhenCreating()
+            URL::make('Link')->hideWhenUpdating()->hideWhenCreating(),
+
+            Code::make('Code', 'embedded_code')->hideWhenUpdating()->hideWhenCreating()->hideFromIndex(),
         ];
     }
 

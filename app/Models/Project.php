@@ -88,9 +88,12 @@ class Project extends Model implements HasMedia
 
     public function getEmbeddedCodeAttribute(): string
     {
-        return '<div style="height: 800px;overflow: hidden;box-shadow: rgb(0 0 0 / 4%) 0 1px 0, rgb(0 0 0 / 5%) 0 2px 7px, rgb(0 0 0 / 6%) 0 12px 22px;border-radius: 10px;">
-            <iframe frameborder="0" src="' . $this->link . '" width="100%" height="800px"></iframe>
-        </div>';
+        return '<div style="height: 800px;
+            overflow: hidden;
+            box-shadow: rgb(0 0 0 / 4%) 0 1px 0, rgb(0 0 0 / 5%) 0 2px 7px, rgb(0 0 0 / 6%) 0 12px 22px;
+            border-radius: 10px;">
+    <iframe frameborder="0" src="' . $this->link . '" width="100%" height="800px"></iframe>
+</div>';
     }
 
 }

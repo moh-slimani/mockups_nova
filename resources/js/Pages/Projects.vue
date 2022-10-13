@@ -14,11 +14,11 @@ const props = defineProps({ projects: Array })
 
         <div v-for="project in projects"
              :key="project.id"
-             class=""
+             class="space-y-4"
         >
 
 
-            <div class="flex flex-row bg-[#DFE1E5] rounded-lg p-4 mb-4 items-center space-x-2 shadow-md">
+            <div class="flex flex-row bg-[#DFE1E5] rounded-lg p-4 items-center space-x-2 shadow-md">
                 <img :src="project.favicon" alt="" class="h-[18px] w-[18px]">
                 <h3 class=""> {{ project.name }}</h3>
 
@@ -31,6 +31,14 @@ const props = defineProps({ projects: Array })
             </div>
 
             <div v-html="project.embedded_code">
+            </div>
+
+
+            <div class="bg-[#DFE1E5] rounded-lg p-4 shadow-md">
+                <h3 class="font-bold mb-4">Code</h3>
+                <div class="overflow-x-auto bg-gray-800 rounded-lg text-white p-4">
+                    <code class="prose-invert whitespace-pre max-w-full" v-text="project.embedded_code"></code>
+                </div>
             </div>
         </div>
     </div>
