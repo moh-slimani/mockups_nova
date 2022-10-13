@@ -62,7 +62,7 @@ class Project extends Resource
             Number::make('Tabs', 'tabs_count')->showOnIndex()->hideWhenCreating()->hideWhenUpdating(),
             HasMany::make('Tabs'),
 
-            URL::make('Link')
+            URL::make('Link')->hideWhenUpdating()->hideWhenCreating()
         ];
     }
 

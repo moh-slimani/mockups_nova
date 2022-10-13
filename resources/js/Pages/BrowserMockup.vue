@@ -76,7 +76,7 @@ setInterval(function () {
                      class="hidden md:flex -mx-2 shrink-0 md:w-64 h-[34]
                      flex-row px-[19px] cursor-pointer items-center space-x-2">
                     <img :src="project.favicon"
-                         class="h-[18px] w-[18px] rounded-full bg-gray-500"
+                         class="h-[18px] w-[18px]"
                          alt="">
                     <h1 class="hidden md:block text-xs grow truncate">{{ tab.title + ' - ' + project.name }}</h1>
                     <img :src="tabClose" class="hidden md:block h-2 w-2" alt="">
