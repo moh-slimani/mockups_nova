@@ -33,6 +33,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @property-read string $favicon
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|Media[] $media
  * @property-read int|null $media_count
+ * @property-read string $embedded_code
+ * @property-read string $link
  */
 class Project extends Model implements HasMedia
 {
@@ -47,7 +49,7 @@ class Project extends Model implements HasMedia
 
     protected $hidden = ['media'];
 
-    protected $appends = ['favicon'];
+    protected $appends = ['favicon', 'embedded_code'];
 
     protected $with = ['tabs'];
 
@@ -82,6 +84,13 @@ class Project extends Model implements HasMedia
     public function getLinkAttribute(): string
     {
         return route('projects.show', $this->id);
+    }
+
+    public function getEmbeddedCodeAttribute(): string
+    {
+        return '<div style="height: 800px;overflow: hidden;box-shadow: rgb(0 0 0 / 4%) 0 1px 0, rgb(0 0 0 / 5%) 0 2px 7px, rgb(0 0 0 / 6%) 0 12px 22px;border-radius: 10px;">
+            <iframe frameborder="0" src="' . $this->link . '" width="100%" height="800px"></iframe>
+        </div>';
     }
 
 }

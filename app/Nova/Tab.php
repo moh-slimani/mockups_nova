@@ -55,6 +55,10 @@ class Tab extends Resource
                 ->hideFromIndex()
                 ->rules('required')
                 ->temporary(now()->addMinutes(10)),
+
+            Images::make('Mobile Screen', 'mobile_screen')
+                ->hideFromIndex()
+                ->temporary(now()->addMinutes(10)),
         ];
     }
 

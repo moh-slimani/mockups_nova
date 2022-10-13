@@ -25,6 +25,7 @@
         "vue": "^3.2.31"
     },
     "dependencies": {
+        "@headlessui/vue": "^1.7.3",
         "moment": "^2.29.4",
         "tailwind-scrollbar": "^2.1.0-preview.0"
     }

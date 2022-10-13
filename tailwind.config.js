@@ -21,7 +21,7 @@ module.exports = {
     plugins: [
         require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),
-        require('tailwind-scrollbar'),
+        require('tailwind-scrollbar')({ nocompatible: true }),
         require('@tailwindcss/line-clamp'),
     ]
 }

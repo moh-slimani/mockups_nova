@@ -43,7 +43,7 @@ class Tab extends Model implements HasMedia
 
     protected $hidden = ['media'];
 
-    protected $appends = ['screen'];
+    protected $appends = ['screen', 'mobile_screen'];
 
 
     public function project(): BelongsTo
@@ -64,6 +64,7 @@ class Tab extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('screen')->singleFile();
+        $this->addMediaCollection('mobile_screen')->singleFile();
     }
 
     public function getScreenAttribute(): string
@@ -74,5 +75,15 @@ class Tab extends Model implements HasMedia
                 ? $l->getTemporaryUrl(Carbon::now()->addDays(1))
                 : $l->getFullUrl()
             : '';
+    }
+
+    public function getMobileScreenAttribute(): ?string
+    {
+        $l = $this->getMedia('mobile_screen')->last();
+        return $l
+            ? $l->disk == 's3'
+                ? $l->getTemporaryUrl(Carbon::now()->addDays(1))
+                : $l->getFullUrl()
+            : null;
     }
 }

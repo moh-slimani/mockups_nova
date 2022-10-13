@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProjectController;
 use App\Models\Project;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -17,15 +18,10 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return redirect()->route('projects.index');
 });
 
-Route::get('projects/{project}', function (Project $project) {
-    return Inertia::render('BrowserMockup', ['project' => $project]);
-})->name('projects.show');
+Route::resource('projects', ProjectController::class);
 
 Route::middleware([
     'auth:sanctum',
