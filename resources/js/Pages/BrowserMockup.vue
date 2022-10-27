@@ -10,7 +10,7 @@ import secure from '../assets/img/secure-icon.svg'
 import menu from '../assets/img/menu-icon.svg'
 import homeIcon from '../assets/img/home-icon.svg'
 import RightIcons from '../assets/img/right-icons.svg'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { Head } from '@inertiajs/inertia-vue3'
 import moment from 'moment'
 
@@ -41,6 +41,17 @@ const desktopVersion = ref(false)
 setInterval(function () {
     time.value = moment().format('HH:mm')
 }, 1000)
+const isLoaded = ref(false)
+
+
+watch(selectedTab, () => {
+    isLoaded.value = false
+})
+
+const onImgLoad = () => {
+    isLoaded.value = true
+    console.log('image loaded')
+}
 </script>
 
 
@@ -50,14 +61,26 @@ setInterval(function () {
     </head>
 
     <div class="relative pt-20">
-        <div class="">
+        <div class="relative">
+            <div v-show="!isLoaded" class="absolute inset-0 flex items-center justify-center bg-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                     style="margin: auto; background: none; display: block; shape-rendering: auto;"
+                     width="50px"
+                     height="50px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                    <circle cx="50" cy="50" r="32" stroke-width="8" stroke="#1d0e0b"
+                            stroke-dasharray="50.26548245743669 50.26548245743669" fill="none" stroke-linecap="round">
+                        <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s"
+                                          keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform>
+                    </circle>
+                </svg>
+            </div>
             <div class="overflow-y-scroll h-[calc(100vh-80px)]"
                  :class="[selectedTab.mobile_screen && !desktopVersion ? 'hidden md:block' : '']">
-                <img :src="selectedTab.screen" class="w-full" alt="">
+                <img v-show="isLoaded" :src="selectedTab.screen" @load="onImgLoad" class="w-full" alt="">
             </div>
             <template v-if="selectedTab.mobile_screen && !desktopVersion">
                 <div class="overflow-y-scroll z-0 h-[calc(100vh-80px)] md:hidden">
-                    <img :src="selectedTab.mobile_screen" class="w-full" alt="">
+                    <img :src="selectedTab.mobile_screen" @load="onImgLoad" class="w-full" alt="">
                 </div>
             </template>
         </div>
