@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import { Switch } from '@headlessui/vue'
 
 
-const minimal = ref(false)
+const minimal = ref(true)
 </script>
 
 <template>
