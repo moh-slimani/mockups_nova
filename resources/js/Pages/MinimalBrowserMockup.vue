@@ -32,8 +32,8 @@ const img = computed(() => {
 <template>
 
     <div class="relative rounded-xl mx-auto" :class="{'max-w-md': mobileScreen}">
-        <div class="absolute top-0 inset-x-0 bg-white z-10 shadow-md">
-            <div :class="{'md:px-6 ': !mobileScreen}" class="flex p-3 flex-row rounded-t-xl justify-between">
+        <div class="absolute top-0 inset-x-0 bg-gray-100 z-10 shadow-md">
+            <div :class="{'md:px-6 ': !mobileScreen}" class="flex p-2 flex-row rounded-t-xl justify-between">
                 <div :class="{'md:flex': !mobileScreen}" class="hidden flex-row space-x-2 items-center">
                     <div class="w-3 h-3 bg-red-400 rounded-full"></div>
                     <div class="w-3 h-3 bg-amber-300 rounded-full"></div>
@@ -107,7 +107,7 @@ const img = computed(() => {
                 </div>
             </div>
         </div>
-        <div class="pt-[60px]">
+        <div class="pt-[52px]">
             <ScreenShot :key="img" :img="img"/>
         </div>
     </div>
