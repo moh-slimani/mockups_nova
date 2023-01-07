@@ -16,7 +16,7 @@ const onImgLoad = () => {
 </script>
 
 <template>
-  <div class="overflow-y-scroll rounded-b-xl h-[calc(100vh-60px)] relative">
+  <div class="overflow-y-scroll rounded-b-xl h-[calc(100vh)] pt-[52px] relative">
     <div v-show="!isLoaded"
          class="absolute inset-0 flex items-center rounded-b-xl justify-center bg-gray-200">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

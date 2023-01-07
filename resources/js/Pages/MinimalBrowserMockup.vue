@@ -86,7 +86,7 @@ const img = computed(() => {
                         </transition>
                     </div>
                 </Listbox>
-                <div class="text-gray-500 text-xl hidden md:flex flex-row space-x-2 items-center">
+                <div class="text-gray-500 text-xl flex flex-row space-x-2 items-center">
                     <a class="p-1 h-9 w-9 active:text-gray-900 hover:bg-gray-200  rounded-md flex items-center justify-center"
                        :href="selectedTab.url" target="_blank">
                         <i class="ri-external-link-line"></i>
@@ -107,9 +107,7 @@ const img = computed(() => {
                 </div>
             </div>
         </div>
-        <div class="pt-[52px]">
-            <ScreenShot :key="img" :img="img"/>
-        </div>
+        <ScreenShot :key="img" :img="img"/>
     </div>
 
 </template>
