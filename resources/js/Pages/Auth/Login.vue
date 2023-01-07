@@ -1,12 +1,12 @@
 <script setup>
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
-import AuthenticationCard from '@/Components/AuthenticationCard.vue';
-import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
-import Checkbox from '@/Components/Checkbox.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import AuthenticationCard from '@/Components/kit/AuthenticationCard.vue';
+import AuthenticationCardLogo from '@/Components/kit/AuthenticationCardLogo.vue';
+import Checkbox from '@/Components/kit/Checkbox.vue';
+import InputError from '@/Components/kit/InputError.vue';
+import InputLabel from '@/Components/kit/InputLabel.vue';
+import PrimaryButton from '@/Components/kit/PrimaryButton.vue';
+import TextInput from '@/Components/kit/TextInput.vue';
 
 defineProps({
     canResetPassword: Boolean,
