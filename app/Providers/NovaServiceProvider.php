@@ -2,7 +2,14 @@
 
 namespace App\Providers;
 
+use App\Nova\Dashboards\Main;
+use App\Nova\Project;
+use App\Nova\Tab;
+use App\Nova\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Laravel\Nova\Menu\MenuItem;
+use Laravel\Nova\Menu\MenuSection;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
@@ -16,6 +23,18 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function boot()
     {
         parent::boot();
+
+        Nova::mainMenu(function (Request $request) {
+            return [
+                MenuSection::dashboard(Main::class)->icon('chart-bar'),
+
+                MenuSection::make('Admin', [
+                    MenuItem::resource(User::class),
+                    MenuItem::resource(Project::class),
+                    MenuItem::resource(Tab::class),
+                ])->icon('folder'),
+            ];
+        });
     }
 
     /**
@@ -52,10 +71,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      *
      * @return array
      */
-    protected function dashboards()
+    protected function dashboards(): array
     {
         return [
             new \App\Nova\Dashboards\Main,
+            new \App\Nova\Dashboards\UserInsights
         ];
     }
 

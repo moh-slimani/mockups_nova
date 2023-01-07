@@ -45,11 +45,15 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param Request $request
      * @param Project $project
      * @return Response
      */
-    public function show(Project $project): Response
+    public function show(Request $request, Project $project): Response
     {
+        if ($request->get('minimal')) {
+            return Inertia::render('MinimalBrowserMockup', ['project' => $project]);
+        }
         return Inertia::render('BrowserMockup', ['project' => $project]);
     }
 

@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -49,9 +51,16 @@ class User extends Resource
             ID::make()->sortable(),
 
             Avatar::make('avatar')->thumbnail(function () {
-                /** @var \App\Models\User $this */
                 return $this->avatar;
-            }),
+            })->hideFromDetail()
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
+
+
+            Images::make('Avatar', 'avatar')
+                ->hideFromIndex()
+                ->conversionOnIndexView('thumb')
+                ->temporary(now()->addMinutes(10)),
 
             Text::make('Name')
                 ->sortable()
@@ -63,17 +72,14 @@ class User extends Resource
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
+            Number::make('Projects', 'projects_count')->showOnIndex()->hideWhenCreating()->hideWhenUpdating(),
+            HasMany::make('Projects'),
+
+
             Password::make('Password')
                 ->onlyOnForms()
                 ->creationRules('required', Rules\Password::defaults())
                 ->updateRules('nullable', Rules\Password::defaults()),
-
-            Images::make('Avatar', 'avatar')
-                ->hideFromIndex()
-                ->hideFromDetail()
-                ->conversionOnIndexView('thumb')
-                ->rules('required')
-                ->temporary(now()->addMinutes(10)),
         ];
     }
 

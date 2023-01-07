@@ -2,6 +2,8 @@
 
 namespace App\Nova\Dashboards;
 
+use App\Nova\Metrics\TotalProjects;
+use App\Nova\Metrics\TotalUsers;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Dashboards\Main as Dashboard;
 
@@ -12,9 +14,11 @@ class Main extends Dashboard
      *
      * @return array
      */
-    public function cards()
+    public function cards(): array
     {
         return [
+            TotalUsers::make(),
+            TotalProjects::make(),
             new Help,
         ];
     }
