@@ -47,18 +47,18 @@ const img = computed(() => {
                             class="bg-black bg-opacity-5 text-gray-600 text-center relative w-full  rounded-md shadow-sm pl-3 pr-10 py-2
               cursor-pointer focus:outline-none focus:ring-0 sm:text-sm"
                             @click="dropDownAnimation = false">
-                            <div class="flex flex-row items-center space-x-2"
+                            <div class="flex flex-row items-center space-x-2 max-w-[calc(100vw-200px)]"
                                  :class="[mobileScreen ? 'justify-start': 'justify-center']">
                                 <img :src="project.favicon" alt="" class="flex-shrink-0 h-4 w-4 rounded-full"/>
-                                <span class="truncate">{{ project.name }} - {{ selectedTab.title }}</span>
+                                <span class="truncate"><span v-if="!mobileScreen">{{ project.name }} - </span>{{ selectedTab.title }}dddddddddddddddddddddddddddd</span>
                             </div>
                             <span v-if="dropDownAnimation && project.tabs.length > 1"
                                   class="absolute inset-y-1 right-1 w-7 rounded-md bg-gray-300 animate-ping">
-            </span>
+                            </span>
                             <span v-if="project.tabs.length"
                                   class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                <i class="ri-arrow-down-s-line align-middle text-xl" aria-hidden="true"/>
-            </span>
+                                <i class="ri-arrow-down-s-line align-middle text-xl" aria-hidden="true"/>
+                            </span>
                         </ListboxButton>
 
                         <transition leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100"
@@ -78,8 +78,8 @@ const img = computed(() => {
 
                                         <span v-if="selected"
                                               :class="[active ? 'text-white' : 'text-indigo-600', 'absolute inset-y-0 right-0 flex items-center pr-4']">
-                  <i class="ri-checkbox-circle-line align-middle text-xl" aria-hidden="true"/>
-                </span>
+                                          <i class="ri-checkbox-circle-line align-middle text-xl" aria-hidden="true"/>
+                                        </span>
                                     </li>
                                 </ListboxOption>
                             </ListboxOptions>

@@ -10,7 +10,7 @@ const props = defineProps({ projects: Array })
         <title>Mockups</title>
     </head>
 
-    <div class="max-w-7xl mx-auto flex flex-col space-y-20 p-10">
+    <div class="max-w-7xl mx-auto flex flex-col space-y-20 py-10 px-2">
 
         <div v-for="project in projects"
              :key="project.id"
