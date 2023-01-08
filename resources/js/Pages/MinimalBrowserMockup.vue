@@ -50,7 +50,7 @@ const img = computed(() => {
                             <div class="flex flex-row items-center space-x-2 max-w-[calc(100vw-200px)]"
                                  :class="[mobileScreen ? 'justify-start': 'justify-center']">
                                 <img :src="project.favicon" alt="" class="flex-shrink-0 h-4 w-4 rounded-full"/>
-                                <span class="truncate"><span v-if="!mobileScreen">{{ project.name }} - </span>{{ selectedTab.title }}dddddddddddddddddddddddddddd</span>
+                                <span class="truncate"><span v-if="!mobileScreen">{{ project.name }} - </span>{{ selectedTab.title }}</span>
                             </div>
                             <span v-if="dropDownAnimation && project.tabs.length > 1"
                                   class="absolute inset-y-1 right-1 w-7 rounded-md bg-gray-300 animate-ping">
